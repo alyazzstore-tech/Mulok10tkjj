@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALYAZZ STORE - Top Up Diamond Game</title>
 
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      color: white;
+    }
+
+    header {
+      background: #020617;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 20px auto;
+      background: #020617;
+      border-radius: 15px;
+      padding: 18px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #22c55e;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #cbd5f5;
+    }
+
+    input, select, button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input, select {
+      background: #0f172a;
+      color: white;
+      border: 1px solid #1e293b;
+    }
+
+    button {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: black;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.02);
+    }
+
+    .price {
+      margin-top: 12px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #22c55e;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  ⚡ ALYAZZ STORE ⚡<br>
+  <span style="font-size:12px; color:#94a3b8;">Top Up Diamond Game Cepat & Aman</span>
+</header>
+
+<div class="container">
+  <h2>FORM TOP UP</h2>
+
+  <label>Pilih Game</label>
+  <select id="game">
+    <option value="ml">Mobile Legends</option>
+    <option value="ff">Free Fire</option>
+    <option value="pubg">PUBG Mobile</option>
+    <option value="genshin">Genshin Impact</option>
+  </select>
+
+  <label>User ID / Server</label>
+  <input type="text" id="userid" placeholder="Contoh: 12345678(1234)">
+
+  <label>Pilih Nominal</label>
+  <select id="nominal" onchange="hitungHarga()">
+    <option value="0">-- Pilih Nominal --</option>
+    <option value="15000">86 Diamond - Rp15.000</option>
+    <option value="30000">172 Diamond - Rp30.000</option>
+    <option value="60000">257 Diamond - Rp60.000</option>
+    <option value="120000">514 Diamond - Rp120.000</option>
+  </select>
+
+  <label>Metode Pembayaran</label>
+  <select>
+    <option>DANA</option>
+    <option>OVO</option>
+    <option>GoPay</option>
+    <option>QRIS</option>
+  </select>
+
+  <div class="price" id="total">Total: Rp 0</div>
+
+  <button onclick="order()">Beli Sekarang</button>
+</div>
+
+<footer>
+  © 2026 ALYAZZ STORE • Fast • Secure • Trusted
+</footer>
+
+<script>
+function hitungHarga() {
+  let harga = document.getElementById("nominal").value;
+  document.getElementById("total").innerText = 
+    "Total: Rp " + Number(harga).toLocaleString("id-ID");
+}
+
+function order() {
+  let game = document.getElementById("game").value;
+  let user = document.getElementById("userid").value;
+  let nominal = document.getElementById("nominal").value;
+
+  if(user === "" || nominal === "0") {
+    alert("Mohon lengkapi data terlebih dahulu!");
+    return;
+  }
+
+  alert(
+    "Pesanan berhasil dibuat!\n\n" +
+    "Toko : ALYAZZ STORE\n" +
+    "Game : " + game +
+    "\nUser ID : " + user +
+    "\nTotal : Rp " + Number(nominal).toLocaleString("id-ID") +
+    "\n\n(Admin akan segera memproses pesanan)"
+  );
+}
+</script>
+
+</body>
+  </html>
